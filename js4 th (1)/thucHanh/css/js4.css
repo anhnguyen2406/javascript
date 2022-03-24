@@ -1,0 +1,46 @@
+.header{
+width: 100%;
+}
+.news img{
+width: 100%;
+}
+.open-search{
+	width: 100%;
+}
+.open-search img{
+
+height: 30px;
+}
+.timkiem{
+width: 100%;
+display: none;
+ align-items: center;
+ justify-content: center;
+}
+.hien{
+	display: block;
+}
+.search{
+	width: 70%;
+}
+.nut{
+	width: 30%;
+}
+.news a{
+	font-size: 25px;
+}
+a:hover{
+	color: red;
+}
+.news{
+	text-align: center;
+}
+.timkiem input{ 
+	width: 40%;
+	font-size:1.6em; padding:.5em; 
+}
+.timkiem button{
+	width: 20%;
+	font-size: 1.7em;
+	background-color: blue;
+}

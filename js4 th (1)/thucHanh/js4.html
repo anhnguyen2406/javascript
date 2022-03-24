@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="css/js4.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="header">
+		<button class="open-search">
+			<figure class="figure">
+				<img src="./image/kinhlup.jpg" class="figure-img img-fluid rounded" alt="...">
+			</figure>
+		</button>
+	</div>
+	<div class="timkiem">
+		<form >
+			<input type="text" id="search">
+			<button id="nut"><b>Search</b></button>
+		</form>
+	</div>
+	<div class="news">
+		<div class="search"></div>
+
+		
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+
+		var url = 'https://gnews.io/api/v4/top-headlines?token=e67f46855fc44d70c466bacf9ef358f1';
+		ajaxx(url);
+		$('#nut').click(function(e){
+			e.preventDefault()
+			var text= $('#search').val()
+			$(".news").empty();
+			$(".timkiem").removeClass('hien');
+			if (text != '') {
+				url= "https://gnews.io/api/v4/search?q="+text+"&token=e67f46855fc44d70c466bacf9ef358f1"
+				ajaxx(url);
+			}
+		})
+		$('.open-search').click(function(){
+			$('.timkiem').addClass('hien');
+
+		})
+
+		function ajaxx(url) {
+			$.ajax({
+				method: "get",
+				url: url
+			})
+			.done(function( msg ) {
+				console.log(msg);
+				for (let i = msg.articles.length - 1; i >= 0; i--) {
+			// $('.news').html(msg.articles[i].image, p)
+			$('.news').append('<h1 class= title>'+msg.articles[i].title+'<h1>')
+			$('.news').append('<img src="'+msg.articles[i].image+'" alt="">')
+			$('.news').append('<p>'+msg.articles[i].content+'<p>')
+			$('.news').append('<a href='+msg.articles[i].source.url+' target="_blank">'+msg.articles[i].source.name+'</a>')
+		}
+		
+	});
+		}
+		
+	</script>
+
+</body>
+</html>
